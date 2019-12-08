@@ -255,7 +255,17 @@
 
     BuildController();
 
+    let stats;
+
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '20%';
+    stats.domElement.style.top = '40%';
+    document.body.appendChild( stats.domElement );
+
     function render() {
+
+      stats.begin();
 
       // Build Box
       BuildCube();
@@ -303,6 +313,8 @@
 
       BuildLetter()
       gl.drawArrays(gl.TRIANGLES, 0, 15);
+
+      stats.end();
 
       requestAnimationFrame(render); 
     }
@@ -429,7 +441,6 @@
       
       OnCollision();
     }
-
 
   }
 
